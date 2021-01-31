@@ -1,0 +1,1 @@
+<h1>Banking System</h1>This is a Banking system project made in html sass and vanilla JS where u can perform operations like creation & deletion of account, withdraw & deposit money, Mini-Statement facility, inbox messages facility and changing password. You will be getting a debit card too.
