@@ -1,0 +1,57 @@
+@mixin flex($direction, $align, $justify) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+}
+@mixin media($width, $left) {
+    .mini_s{
+        width: $width;
+        left: $left;
+    }
+}
+.mini_s{
+    width: 50%;
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    border: 2px solid #333;
+    border-radius: 4px;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.562);
+    padding: .5rem 1rem;
+    display: none;
+    .close_btn{
+        font-size: 3rem;
+        font-weight: 600;
+        cursor: pointer;
+        text-align: right;
+    }
+    .bank_info{
+        @include flex(column, center, center);
+        padding: 1rem;
+        border: 1px solid black;
+    }
+    .banking_details{
+        margin-top: 1rem;
+        .inner_div{
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 1rem;
+            @include flex(row, center, space-between);
+            border-bottom: 1px solid #777;
+        }
+    }
+    .footer{
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+    }
+}
+@media screen and (max-width:525px){
+    @include media(75%, 10%);
+}
+@media screen and (max-width:385px){
+    @include media(95%, 2%);
+}

@@ -1,0 +1,18 @@
+.atm{
+    display: none;
+}
+.atm.show{
+    width: 100%;
+    min-height: 100%;
+    background:linear-gradient(180deg, rgba(0,0,0,.7), rgba(0,0,0,.2)), url("./images/Bank2.jpg") no-repeat center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.atm.blur{
+    pointer-events: none;
+}
+@import "card";
+@import "modal";

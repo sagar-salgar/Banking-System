@@ -1,0 +1,152 @@
+$text_shadow : 1px 1px 2px black;
+@mixin color_shadow {
+    color: #fff;
+    text-shadow: $text_shadow;
+}
+@mixin media($width, $height) {
+    .atm_card{
+        width: $width;
+        height: $height;
+    }
+}
+@mixin circle($right, $color, $content) {
+    content: $content;
+    position: absolute;
+    bottom: 10px;
+    right: $right;
+    width: 50px;
+    height: 50px;
+    background: $color;
+    border-radius: 50%;
+    opacity: .6;
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-weight: 700;
+}
+
+.atm_card{
+    width: 40%;
+    height: auto;
+    backdrop-filter: blur(5px);
+    .face{
+        width: 100%;
+        height: 100%;
+        padding: .5rem 1rem;
+        box-shadow: 0 15px 35px rgba(0,0,0,.7);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, .05);
+        .row1{
+            display: flex;
+            justify-content: space-between;
+            @include color_shadow();
+        }
+        .chip{
+            width: 15%;
+            height: 5vh;
+            margin-top: .5rem;
+            margin-bottom: .5rem;
+            border-radius: 6px;
+            border: 2px solid black;
+            background: url("./images/chip.png") no-repeat center;
+            background-size: cover;
+        }
+        .card_no{
+            width: 100%;
+            font-size: 1.5rem;
+            font-weight: bolder;
+            text-align: center;
+            word-spacing: 6px;
+            margin-bottom: .5rem;
+            @include color_shadow();
+        }
+        .validity{
+            display: flex;
+            h2{
+                display: flex;
+                flex-direction: column;
+                @include color_shadow();
+                margin-right: 1rem;
+                .thru{
+                    padding-left: .4rem;
+                    font-size: .7rem;
+                }
+            }
+        }
+        .name{
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            @include color_shadow();
+        }
+    }
+    .face.front::before{
+        @include circle(30px, #ffd32a, "Card");
+    }
+    .face.front::after{
+        @include circle(70px, #00d8d6, "Master");
+    }
+}
+
+// operations
+.atm .operations{
+    margin: 0rem auto;
+    margin-top: 3rem;
+    height: auto;
+    width: 90%;
+    display: flex;
+    align-items: baseline;
+    // justify-content: space-around;
+    flex-wrap: wrap;
+    .btn{
+        outline: none;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-top: 1rem;
+        margin-right: 1.5rem;
+        padding: .5rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        background:  #ffd32a;
+        border: 2px solid#ffd32a;
+        transition: .2s;
+        color: black;
+        &:hover{
+            color: #ffd32a;
+            background: transparent;
+            font-weight: 500;
+            backdrop-filter: blur(5px);
+        }
+    }
+}
+
+
+
+@media screen and (max-width:890px){
+    @include media(45%, 35vh);
+}
+@media screen and (max-width:760px){
+    @include media(55%, 35vh);
+}
+@media screen and (max-width:625px){
+    @include media(65%, 35vh);
+}
+@media screen and (max-width:535px){
+    @include media(75%, 35vh);
+}
+@media screen and (max-width:460px){
+    @include media(90%, 37vh);
+    .atm_card{
+        margin-top: 2rem;
+    }
+}
+@media screen and (max-width:370px){
+    @include media(100%, 40vh);
+    .atm_card{
+        margin-top: 10rem;
+    }
+}
+@media screen and (max-width:330px){
+    @include media(100%, 45vh);
+}

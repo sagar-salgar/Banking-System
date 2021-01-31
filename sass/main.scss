@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+// global
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+}
+// variables
+$white:#ecf0f1;
+$black:#2f3542;
+$text_shadow : 1px 1px 1px rgba(0,0,0,.9); 
+
+// mixin
+@mixin reset {
+    outline: none;
+    border: none;
+}
+@mixin media($width) {
+    .bank_form form{
+        width:$width;
+    }
+}
+@mixin flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    font-size: 62.5%;
+    @include flex();
+}
+
+.bank_form{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0,0,0,.6), rgba(0,0,0,.3)), url("./images/Bank.jpg") no-repeat center;
+    background-size: cover;
+    @include flex();
+    form{
+        width: 40%;
+        margin:  0 auto;
+        background-clip: padding-box;
+        border: 2px solid $black;
+        border-radius: 5px;
+        backdrop-filter: blur(10px);
+        box-shadow: 10px 10px 10px 3px rgba(45, 45, 68, 0.32);
+        padding: 2rem 1rem;
+        h1{
+            color: $white;
+            text-align: center;
+            text-shadow: $text_shadow;
+        }
+        #error_div{
+            color: #EA2027;
+            font-size: .9rem;
+            text-shadow: $text_shadow;
+        }
+        .input_div{
+            margin-top: 1.5rem;
+            position: relative;
+
+            input, select{
+                @include reset();
+                width: 100%;
+                font-size: 1rem;
+                padding: .2rem;
+                background: transparent;
+                border-bottom: 1px solid $black;
+                color: $white;
+            }
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+            input[type=number] {
+                -moz-appearance: textfield;
+            }
+            label{
+                font-size: 1rem;
+                display: block;
+                font-weight: 500;
+                cursor: pointer;
+                color: $white;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                transition: .2s ease;
+                text-shadow:$text_shadow
+            }
+            input:focus ~ label,
+            input:valid ~ label,
+            select:focus ~ label,
+            select:valid ~ label{
+                transform: translateY(-23px);
+                color: goldenrod;
+                font-size: .9rem;
+            }
+            .underline{
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 2px;
+                width: 100%;
+            }
+            .underline::before{
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 100%;
+                width: 0%;
+                background: goldenrod;
+                transition: .2s ease;
+            }
+            input:focus ~.underline::before,
+            input:valid ~.underline::before,
+            select:focus ~.underline::before
+            {
+                width: 100%;
+            }
+            select{
+                cursor: pointer;
+            }
+            select option{
+                background: $black;
+            }
+        }
+        #submit_btn{
+            @include reset();
+            margin-top: 1rem;
+            padding: .3rem .6rem;
+            cursor: pointer;
+            background-color: #ffa801;
+            font-weight: 600;
+            transition: .3s;
+
+            &:hover{
+                background: #ffc048;
+            }
+        }
+    }
+}
+@media screen and (max-width:800px){
+    @include media(50%);
+}
+@media screen and (max-width:580px){
+    @include media(60%);
+}
+@media screen and (max-width:450px){
+    @include media(75%);
+}
+@media screen and (max-width:360px){
+    @include media(90%);
+}
+@import "atm";
+@import "msg_box";
+@import "./mini";
